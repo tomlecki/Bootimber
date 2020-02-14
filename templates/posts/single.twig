@@ -1,0 +1,32 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+{# Example of include() with variables #}
+{{ include('parts/include-example.twig', { template_path: '/posts/single.twig' }) }}
+
+<div class="container my-3">
+	<div class="row">
+		<div class="col">
+			<h2 class="font-weight-bold">{{ post.title }}</h2>
+			<div>{{ post.content }}</div>
+			<div class="border-top border-primary p-2">
+			<h2 class="font-weight-bold">Filter examples</h2>
+			<p>For more information visit <a href="https://twig.symfony.com/doc/2.x/">Twig Docs</a></p>
+
+			{# Some of available variables and also example of using macro to generate each row #}
+			{% from 'parts/macros.twig' import row %}
+			<div class="container mt-2">
+				{{ row( 'post.content|excerpt(3)', post.content|excerpt(3) ) }}
+				{{ row( 'post.content|excerpt(11)', post.content|excerpt(11) ) }}
+				{{ row( 'post.content|length', post.content|length ) }}
+				{{ row( 'post.content|lower', post.content|lower ) }}
+				{{ row( 'post.content|upper', post.content|upper ) }}
+				{{ row( 'post.content|title', post.content|title ) }}
+				{{ row( 'post.content|slice(12, 32)', post.content|slice(12, 32) ) }}				
+			</div>
+		</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

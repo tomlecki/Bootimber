@@ -1,0 +1,30 @@
+{% if posts.pagination.pages %}
+    <nav class="my-4" aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+
+            {# Previous #}
+            {% if posts.pagination.prev %}
+                <li class="page-item"><a class="page-link" href="{{ posts.pagination.prev.link }}">Previous</a></li>
+            {% else %}
+                <li class="page-item disabled"><span class="page-link">Previous</span></li>
+            {% endif %}
+
+            {# Pages #}
+            {% for page in posts.pagination.pages %}
+                {% if page.link %}
+                <li class="page-item"><a class="page-link" href="{{ page.link }}">{{ page.title }}</a></li>
+                {% else %}
+                <li class="page-item active"><span class="page-link">{{ page.title }}</span></li>
+                {% endif %}
+            {% endfor %}
+
+            {# Next #}
+            {% if posts.pagination.next %}
+                <li class="page-item"><a class="page-link" href="{{ posts.pagination.next.link }}">Next</a></li>
+            {% else %}
+                <li class="page-item disabled"><span class="page-link">Next</span></li>
+            {% endif %}
+
+        </ul>
+    </nav>
+{% endif %}

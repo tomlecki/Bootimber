@@ -1,0 +1,38 @@
+{# Example of Bootstrap navbar, https://getbootstrap.com/docs/4.3/components/navbar/ #}
+
+<div class="container-fluid bg-primary">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand mr-5" href="{{ site.link }}">
+                <span class="h3 font-weight-bold font-italic">{{ site.name }}</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    {% for item in menu.get_items %}
+                        {% if item.children %}
+                        <li class="nav-item dropdown {% if item.current_item_ancestor %}active{% endif %}">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ item.title }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                {% for child in item.children %}
+                                <a class="dropdown-item {% if child.current %}active{% endif %}"
+                                    href="{{ child.link }}">{{ child.title }}</a>
+                                {% endfor %}
+                            </div>
+                        </li>
+                        {% else %}
+                        <li class="nav-item mr-2 {% if item.current %}active{% endif %}">
+                            <a class="nav-link" href="{{ item.link }}">{{ item.title }}</a>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>

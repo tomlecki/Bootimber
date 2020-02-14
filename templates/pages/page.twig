@@ -1,0 +1,41 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+{# Example of include() with variables #}
+{{ include('parts/include-example.twig', { template_path: '/pages/page.twig' }) }}
+
+<div class="container my-3">
+	<div class="row">
+		<div class="col">
+			<h2 class="mb-4 font-weight-bold">{{ post.title }}</h2>
+			<p class="font-italic">by {{ post.author }}, {{ post.date }}</p>
+			<div>{{ post.content }}</div>
+			<h2 class="font-weight-bold">Variable examples</h2>
+			<p>For more information visit <a href="https://timber.github.io/docs/">Timber Docs</a></p>
+
+			{# Some of available variables and also example of using macro to generate each row #}
+			{% from 'parts/macros.twig' import row %}
+			<div class="container mt-2">
+				{{ row( 'post.title', post.title ) }}
+				{{ row( 'post.content', post.content|excerpt(20) ) }}
+				{{ row( 'post.preview', post.preview ) }}
+				{{ row( 'post.author', post.author ) }}
+				{{ row( 'post.date', post.date ) }}
+				{{ row( 'post.time', post.time ) }}
+				{{ row( 'post.id', post.id ) }}
+				{{ row( 'post.status', post.status ) }}
+				{{ row( 'post.type', post.type ) }}
+				{{ row( 'post.slug', post.slug ) }}
+				{{ row( 'post.link', post.link ) }}
+
+				{# add some categories and tags to see something here #}
+				{{ row( 'post.categories', post.categories|join(', ') ) }}
+				{{ row( 'post.tags', post.tags|join(', ') ) }}
+				{{ row( 'post.terms', post.terms|join(', ') ) }}
+
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

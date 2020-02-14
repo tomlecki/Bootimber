@@ -1,0 +1,33 @@
+{
+  "name": "wp-bootimber",
+  "version": "1.0.0",
+  "description": "Wordpress + Timber + Bootstrap Starter Theme with Sass and BrowserSync",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "wordpress",
+    "timber",
+    "bootstrap",
+    "starter",
+    "theme"
+  ],
+  "author": "Tom Lecki",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^9.6.0",
+    "bootstrap": "^4.3.1",
+    "browser-sync": "^2.26.7",
+    "cssnano": "^4.1.10",
+    "gulp": "^4.0.2",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2"
+  },
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "maintained node versions",
+    "not dead"
+  ]
+}

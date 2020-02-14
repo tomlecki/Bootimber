@@ -1,0 +1,16 @@
+{% macro row(label, var) %}
+<div class="row pb-2 mb-1 border-bottom">
+    <div class="col-3 font-weight-bold text-left">
+        {% verbatim %}
+        <span class="text-secondary font-weight-light">{{</span>
+        {% endverbatim %} 
+        <span class="text-dark">{{ label }}</span>
+        {% verbatim %}
+        <span class="text-secondary font-weight-light">}}</span>
+        {% endverbatim %}
+    </div>
+    <div class="col-9 text-secondary">
+        {{ var }}
+    </div>
+</div>
+{% endmacro %}

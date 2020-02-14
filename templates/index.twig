@@ -1,0 +1,46 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+
+{# Example of include() with variables #}
+{{ include('parts/include-example.twig', { template_path: '/index.twig' }) }}
+
+<div class="container my-3">
+    <div class="row">
+        <div class="col">
+
+			{# Loop for posts #}
+			<h2 class="font-weight-bold">Posts</h2>
+			{% for post in posts %}
+				<div>
+					<a href="{{ post.link }}">{{ post.title }}</a>
+				</div>
+			{% endfor %}
+
+			{# Loop for pages #}
+			<h2 class="mt-4 font-weight-bold">Pages</h2>
+			{% for page in pages %}
+				<div>
+					<a href="{{ page.link }}">{{ page.title }}</a>
+				</div>
+			{% endfor %}
+
+            <h2 class="mt-4 font-weight-bold">Variable examples</h2>
+			<p>For more information visit <a href="https://timber.github.io/docs/">Timber Docs</a></p>
+
+			{# Some of available variables and also example of using macro to generate each row #}
+			{% from 'parts/macros.twig' import row %}
+			<div class="container mt-2">
+				{{ row( 'site.link', site.link ) }}
+				{{ row( 'site.title', site.title ) }}
+				{{ row( 'site.description', site.description ) }}
+				{{ row( 'site.admin_email', site.admin_email ) }}
+				{{ row( 'site.charset', site.charset ) }}
+				{{ row( 'site.theme.link', site.theme.link ) }}
+				{{ row( 'site.theme.path', site.theme.path ) }}
+				{{ row( 'site.theme.name', site.theme.name ) }}
+			</div>
+        </div>
+    </div>
+</div>
+{% endblock %}
